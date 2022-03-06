@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment2 Problem1</title>
+</head>
+
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .main-screen {
+    position: absolute;
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+  }
+
+  .screen {
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    transition: margin-top 5s linear;
+  }
+
+  hr {
+    margin: 0;
+    top: 0;
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    background: blue;
+    border: 1px solid blue;
+  }
+
+  .main-screen:hover .screen {
+    margin-top: 100%;
+  }
+</style>
+
+<body>
+  <div class="main-screen">
+    <div class="screen">
+      <hr>
+    </div>
+  </div>
+</body>
+</html>
