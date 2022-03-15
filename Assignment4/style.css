@@ -1,0 +1,32 @@
+.main-container {
+  height: 100%;
+  width: 100%;
+}
+
+.puzzle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 600px;
+  width: 600px;
+}
+
+.row {
+  height: 200px;
+  width: 600px;
+  display: flex;
+}
+
+.row > .columns {
+  height: 195px;
+  width: 195px;
+  margin: 2.5px;
+  background: black;
+  box-sizing: border-box;
+}
+
+img {
+  height: 195px;
+  width: 195px;
+}
