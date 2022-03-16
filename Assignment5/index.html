@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  <title>Highlight text</title>
+  <script defer src="./index.js"></script>
+</head>
+<body>
+  <main>
+    <div>
+      With async, the file gets downloaded asynchronously and then executed as soon as it's downloaded.
+      With defer, the file gets downloaded asynchronously, but executed only when the document parsing is completed. With defer, 
+      scripts will execute in the same order as they are called. This makes defer the attribute of choice when a script depends on another script. For example, 
+      if you're using jQuery as well as other scripts that depend on it, you'd use defer on them (jQuery included), making sure to call jQuery before the dependent scripts.
+      A good strategy is to use async when possible, and then defer when async isn't an option.
+    </div>
+  </main>
+</body>
+</html>
