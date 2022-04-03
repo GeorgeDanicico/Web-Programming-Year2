@@ -7,7 +7,7 @@
   echo 'connect </br>';
 
   $id = (int) $_POST["id"];
-  $cost = (int) $_POST["estimated_cost"];
+  $cost = (int) $_POST["cost"];
 
   $sql = "UPDATE destinations SET
     estimated_cost='$cost'
