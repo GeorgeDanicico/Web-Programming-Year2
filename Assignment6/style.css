@@ -1,0 +1,28 @@
+body {
+  margin:0
+}
+
+.main-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions label {
+  width: 96px;
+  height: 18px;
+}
+
+.form1, .form2, .form3 {
+  height: 350px;
+  width: 300px;
+  margin: 20px;
+  padding: 5px;
+}
+
+.actions div {
+  border: 1px solid black;
+}
