@@ -1,0 +1,11 @@
+.destinations {
+  padding: 20px;
+    height: 500px;
+  width: 400px;
+}
+
+.destinations-container {
+  height: 500px;
+  width: 800px;
+  border: 1px solid black;
+}
