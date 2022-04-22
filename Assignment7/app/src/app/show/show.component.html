@@ -1,0 +1,32 @@
+<main>
+  <div class="destinations">
+
+    <div class="destinations-container">
+      <div class="col-md-12">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
+      </div>
+
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="
+              let destination of destinations | paginate : {
+                      itemsPerPage: pageSize,
+                      currentPage: page,
+                      totalItems: totalPages
+                    };
+              let i = index
+            "
+          >
+            {{ convert(destination) }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>

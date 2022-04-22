@@ -1,0 +1,16 @@
+<main class="main-container">
+  <div class="actions">
+    <div class="form2">
+      <form method="POST" action="update.php">
+        <h4>Update destination</h4>
+        
+        <label for="id">id:</label>
+        <input type="text" name="id" [(ngModel)]="id"><br><br>
+        <label for="cost">New Estimated Cost:</label>
+        <input type="text" name="cost" [(ngModel)]="estimated_cost"><br><br>
+
+        <button (click)="onUpdate()">Update destination</button>
+      </form>
+    </div>
+  </div>
+</main>

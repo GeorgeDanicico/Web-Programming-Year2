@@ -1,0 +1,25 @@
+<main class="main-container">
+  <div class="actions">
+    <div class="form1">
+      <form method="post">
+        <h4>Add destination</h4>
+        
+        <label for="id">id:</label>
+        <input type="text" name="id" [(ngModel)]="id"><br><br>
+        <label for="city">city:</label>
+        <input type="text" name="city" [(ngModel)]="city"><br><br>
+        <label for="country">country:</label>
+        <input type="text" name="country" [(ngModel)]="country"><br><br>
+        <label for="description">description:</label>
+        <input type="text" name="description" [(ngModel)]="description"><br><br>
+        <label for="tourists">tourists:</label>
+        <input type="text" name="tourists" [(ngModel)]="tourists"><br><br>
+        <label for="estimated_cost">estimated cost:</label>
+        <input type="text" name="estimated_cost" [(ngModel)]="estimated_cost"><br><br>
+
+        <button (click)="onSave($event)">Add destination</button>
+      </form>
+    </div>
+
+  </div>
+</main>

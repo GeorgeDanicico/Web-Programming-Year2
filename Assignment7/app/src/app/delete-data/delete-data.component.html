@@ -1,0 +1,15 @@
+<main class="main-container">
+  <div class="actions">
+    <div class="form3">
+      <form method="POST" action="delete.php">
+        <h4>Delete destination</h4>
+        
+        <label for="id">id:</label>
+        <input type="text" name="id" [(ngModel)]="id"><br><br>
+
+        <button (click)="onDelete()">Delete destination</button>
+      </form>
+    </div>
+  </div>
+
+</main>
