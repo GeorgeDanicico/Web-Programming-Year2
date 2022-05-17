@@ -1,5 +1,6 @@
 package web.assignment8.controller;
 
+import web.assignment8.domain.Grid;
 import web.assignment8.domain.User;
 import web.assignment8.model.DBManager;
 
@@ -25,7 +26,18 @@ public class AttackController extends HttpServlet {
         DBManager dbManager = new DBManager();
         dbManager.addAttack(userId, r, c);
 
-        response.sendRedirect("main_page.jsp");
+        Grid myGrid = (Grid) request.getSession().getAttribute("grid");
+        Grid enemyGrid = (Grid) request.getSession().getAttribute("enemyGrid");
 
+        myGrid.attack(enemyGrid, r, c);
+
+        request.getSession().setAttribute("grid", myGrid);
+        request.getSession().setAttribute("enemyGrid", enemyGrid);
+
+        if (enemyGrid.areShipsDestroyed()) {
+            request.getSession().setAttribute("won", true);
+        }
+
+        response.sendRedirect("main_page.jsp");
     }
 }

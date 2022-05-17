@@ -23,6 +23,7 @@ public class LoginController extends HttpServlet {
         DBManager dbmanager = new DBManager();
         User user = dbmanager.authenticate(username, password);
         int loggedUsers = dbmanager.getSessionCount();
+        dbmanager.deleteAttacks();
 
         if (loggedUsers == 2) {
             HttpSession session = request.getSession();

@@ -63,6 +63,17 @@ public class DBManager {
         }
     }
 
+    public void deleteAttacks() {
+        try {
+            String sql = "DELETE FROM attacks";
+
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addUserToSession(int id, int userId) {
         try {
             String sql = "INSERT INTO session VALUES (" + id + ", " + userId + ")";
@@ -83,6 +94,33 @@ public class DBManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Point> getUserBattleships(int userId) {
+        try {
+            String sql = "SELECT * FROM battleships where userId =" + userId;
+
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            List<Point> battleships = new ArrayList<>();
+
+            while (rs.next()) {
+                int x = rs.getInt(3);
+                int y = rs.getInt(4);
+
+                Point p = new Point(x, y);
+                battleships.add(p);
+            }
+
+            rs.close();
+            connection = null;
+
+            return battleships;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public List<Point> getEnemyAttacks(int userId) {

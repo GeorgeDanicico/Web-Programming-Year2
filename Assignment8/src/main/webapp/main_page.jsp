@@ -13,6 +13,14 @@
     <title>Battlefield</title>
     <style>
         .table {
+            display: flex;
+        }
+
+        .my-ships {
+            width: 125px;
+        }
+
+        .enemy-ships {
             width: 125px;
         }
     </style>
@@ -33,10 +41,8 @@
     </div>
 
     <div class="table">
-        <br>
-        My ships
-        <br>
 
+        <div class="my-ships">
         <%
             if (session.getAttribute("lose") != null) {
                 out.println("You lost the game!");
@@ -44,7 +50,14 @@
         %>
 
         <%
+            if (session.getAttribute("won") != null) {
+                out.println("You won the game!");
+            }
+        %>
+
+        <%
             if (session.getAttribute("grid") != null) {
+                out.println("<br>My ships: <br>");
                 out.print(((Grid) session.getAttribute("grid")).getMap());
         %>
             <form action="AttackController" method="post">
@@ -65,6 +78,17 @@
         <%
         }
         %>
+        </div>
+
+        <div class="enemy-ships">
+            <%
+                if (session.getAttribute("enemyGrid") != null) {
+                    out.println("<br>Enemy ships: <br>");
+                    out.print(((Grid) session.getAttribute("enemyGrid")).getMap());
+                }
+            %>
+        </div>
+        </div>
     </div>
 
 </body>
