@@ -29,9 +29,17 @@
 <body>
 <h3>Login</h3>
 <%
-    if(session.getAttribute("fail") != null && session.getAttribute("fail").equals(true)) {
+    if(session.getAttribute("fail") != null && session.getAttribute("fail").equals("login_issue")) {
 %>
 <p>Login failed, please try again.</p>
+<%
+    }
+%>
+
+<%
+    if(session.getAttribute("fail") != null && session.getAttribute("fail").equals("game_in_progress")) {
+%>
+<p>Game in progress. Please wait</p>
 <%
     }
 %>

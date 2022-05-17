@@ -22,16 +22,28 @@ public class LoginController extends HttpServlet {
 
         DBManager dbmanager = new DBManager();
         User user = dbmanager.authenticate(username, password);
+        int loggedUsers = dbmanager.getSessionCount();
+
+        if (loggedUsers == 2) {
+            HttpSession session = request.getSession();
+            session.setAttribute("fail","game_in_progress");
+            //rd = request.getRequestDispatcher("/index.jsp");
+            response.sendRedirect("index.jsp");
+
+            return;
+        }
+
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("fail",false);
-            //rd = request.getRequestDispatcher("/home.jsp");
-            response.sendRedirect("home.jsp");
+            dbmanager.addUserToSession(user.getId(), user.getId());
+            //rd = request.getRequestDispatcher("/main_page.jsp");
+            response.sendRedirect("main_page.jsp");
 
         } else {
             HttpSession session = request.getSession();
-            session.setAttribute("fail",true);
+            session.setAttribute("fail","login_issue");
             //rd = request.getRequestDispatcher("/index.jsp");
             response.sendRedirect("index.jsp");
         }
