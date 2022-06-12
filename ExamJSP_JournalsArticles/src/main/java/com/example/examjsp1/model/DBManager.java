@@ -182,4 +182,19 @@ public class DBManager {
     }
 
 
+    public void updateArticle(int articleId, String user, int journalid, String summary) {
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        System.out.println(sqlDate);
+        try {
+            String sql = "update articles set user='" + user + "', journalid=" + journalid + ", summary='" + summary + "', date='" +
+                    sqlDate + "' where id=" + articleId;
+
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

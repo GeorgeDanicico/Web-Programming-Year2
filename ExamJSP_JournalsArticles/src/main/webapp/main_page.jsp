@@ -50,6 +50,7 @@
         <table style="text-align:center; width: 500px;">
             <thead>
             <tr>
+                <th>id</th>
                 <th>summary</th>
                 <th>user</th>
                 <th>journalid</th>
@@ -61,6 +62,7 @@
             <% while(i < n) {
                 %>
             <tr>
+                <td><%=articles.get(i).getId()%></td>
                 <td><%=articles.get(i).getSummary()%></td>
                 <td><%=articles.get(i).getUser()%></td>
                 <td><%=articles.get(i).getJournalid()%></td>
@@ -79,6 +81,14 @@
 
     <form method="post" action="ArticleController">
         <p>Add new article to journal:</p>
+        <input type="text" placeholder="journal name" name="journalname">
+        <input type="text" placeholder="summary" name="summary">
+        <button type="submit">Add</button>
+    </form>
+
+    <form method="post" action="UpdateController">
+        <p>Update an article:</p>
+        <input type="text" placeholder="id" name="id">
         <input type="text" placeholder="journal name" name="journalname">
         <input type="text" placeholder="summary" name="summary">
         <button type="submit">Add</button>
