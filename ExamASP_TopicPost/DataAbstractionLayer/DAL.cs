@@ -92,7 +92,7 @@ namespace ExamASP_TopicPost.DataAbstractionLayer
                 MySqlCommand cmd = new MySqlCommand();
 
                 cmd.Connection = conn;
-                cmd.CommandText = "update posts set user='" + user + "', text='" + text + "', date='" + date + "' where id=" + postId;
+                cmd.CommandText = "update posts set user='" + user + "', text='" + text + "', date='" + date.ToString("yyyy-MM-dd H:mm:ss") + "' where id=" + postId;
 
                 cmd.ExecuteNonQuery();
             }
@@ -194,7 +194,7 @@ namespace ExamASP_TopicPost.DataAbstractionLayer
                 int postId = GetNextPostId();
                 Console.WriteLine("Post id: " + postId);
                 cmd.CommandText = "insert into posts(id, topicid, user, text, date) values (" + postId + ", " + topicId + ", '" +
-                    user + "', '" + text + "', '" + date.ToString() + "')";
+                    user + "', '" + text + "', '" + date.ToString("yyyy-MM-dd H:mm:ss") + "')";
 
                 cmd.ExecuteNonQuery();
             }
