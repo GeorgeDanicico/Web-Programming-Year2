@@ -36,6 +36,10 @@ public class Player {
         this.age = age;
     }
 
+    public String toString() {
+        return id + ";" + name + ";" + age;
+    }
+
     public boolean equals(Object o) {
         if (!(o instanceof Player)) return false;
 

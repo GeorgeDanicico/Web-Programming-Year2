@@ -30,6 +30,7 @@
         <th>CAPTAINID</th>
         <th>NAME</th>
         <th>DESCRIPTION</th>
+        <th>MEMBERS</th>
     </tr>
     </thead>
     <tbody>
@@ -41,6 +42,7 @@
         <td><%=Teams.get(i).getCaptainId()%></td>
         <td><%=Teams.get(i).getName()%></td>
         <td><%=Teams.get(i).getDescription()%></td>
+        <td><%=Teams.get(i).getMembers().toString()%></td>
     </tr>
     <%
             i++; }
