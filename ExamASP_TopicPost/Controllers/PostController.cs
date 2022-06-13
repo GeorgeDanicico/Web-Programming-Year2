@@ -46,6 +46,7 @@ namespace ExamASP_TopicPost.Controllers
                         response += newListSplit[i] + "/";
                     }
                 }
+                HttpContext.Session.SetString("old_state", newList);
                  return response;
             }
 
