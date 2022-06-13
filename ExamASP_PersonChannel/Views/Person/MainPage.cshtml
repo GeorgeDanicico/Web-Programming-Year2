@@ -1,0 +1,88 @@
+﻿@{
+    
+}
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Destinations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#button").click(function () {
+                $.get("/Person/GetAllChannels", { user: $("#owner").val(), },
+                    function (data, status) {
+                        $("#maindiv").html(data);
+                        $(".delete-button").click(function (event) {
+                            if (confirm('Are you sure you want to delete?')) {
+                                $.post("/Main/DeleteDestination", { destId: event.target.id }, function () {
+                                    alert("Deleted successfully");
+                                    $("#button").trigger("click");
+                                });
+                            }
+                        })
+                        $(".update-button").click(function () {
+                            console.log("click");
+                            $.get("/Main/UpdateDestination", { destId: event.target.id }, function () {
+                                document.location.href = '/Update';
+                            });
+                        })
+                    });
+            });
+
+            $("#button2").click(function () {
+                $.post("/Person/SubscribePerson", { channelName: $("#channelname").val(), });
+            });
+
+            $.get("/Person/GetMyChannels",
+                function (data, status) {
+                    $("#maindiv2").html(data);
+                    $(".delete-button").click(function (event) {
+                        if (confirm('Are you sure you want to delete?')) {
+                            $.post("/Main/DeleteDestination", { destId: event.target.id }, function () {
+                                alert("Deleted successfully");
+                                $("#button").trigger("click");
+                            });
+                        }
+                    })
+                    $(".update-button").click(function () {
+                        console.log("click");
+                        $.get("/Main/UpdateDestination", { destId: event.target.id }, function () {
+                            document.location.href = '/Update';
+                        });
+                    })
+                });
+        });
+
+
+    </script>
+</head>
+<body>
+
+    <h2>Welcome @Context.Session.GetString("user")</h2>
+    <div>
+        <input placeholder="Owner Name" id="owner" />
+        <input id="button" type="button" value="Get all channels" />
+        <p>Channels List:</p>
+        <div id="maindiv"></div>
+    </div>
+
+    <div>
+        <p>My Channels List:</p>
+        <div id="maindiv2"></div>
+    </div>
+
+    <div>
+        <p>Subscribe to channel</p>
+        <div id="maindiv2"></div>
+        <input placeholder="Channel name" name="channelName" id="channelname"/>
+        <input id="button2" type="button" value="Get all channels" />
+    </div>
+
+    <br />
+</body>
+</html>

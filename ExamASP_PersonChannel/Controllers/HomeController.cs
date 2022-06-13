@@ -1,5 +1,6 @@
 ﻿using ExamASP_PersonChannel.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,13 @@ namespace ExamASP_PersonChannel.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Login(string user)
+        {
+            HttpContext.Session.SetString("user", user);
+
+            return View("../Person/MainPage");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
