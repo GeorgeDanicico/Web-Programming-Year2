@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+</head>
+<body>
+
+    <main class="main-container">
+        <div class="actions">
+            <div class="form1">
+                <form method="POST" asp-controller="Add" asp-action="Insert">
+                    <h4>Add destination</h4>
+
+                    <label for="city">city:</label>
+                    <input type="text" name="city"><br><br>
+                    <label for="country">country:</label>
+                    <input type="text" name="country"><br><br>
+                    <label for="description">description:</label>
+                    <input type="text" name="description"><br><br>
+                    <label for="tourists">tourists:</label>
+                    <input type="text" name="tourists"><br><br>
+                    <label for="estimated_cost">estimated cost:</label>
+                    <input type="text" name="estimated_cost"><br><br>
+
+                    <button type="submit">Add destination</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

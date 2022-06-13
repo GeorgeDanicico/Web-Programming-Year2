@@ -1,0 +1,51 @@
+﻿@{
+    var data = ViewData["data"] as string;
+}
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Destinations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#button").click(function () {
+                $.get("/Main/GetAllDestinations",
+                    function(data,status) {
+                        $("#maindiv").html(data);
+
+                        $(".delete-button").click(function (event) {
+                            if (confirm('Are you sure you want to delete?')) {
+                                $.post("/Main/DeleteDestination", { destId: event.target.id }, function () {
+                                    alert("Deleted successfully");
+
+                                    $("#button").trigger("click");
+                                });
+                            }
+                        })
+
+                        $(".update-button").click(function () {
+                            console.log("click");
+                            $.get("/Main/UpdateDestination", { destId: event.target.id }, function () {
+                                document.location.href = '/Update';
+                            });
+                        })
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <h2>Welcome @Context.Session.GetString("username")</h2>
+    <input id="button" type="button" value="Get all destinations" />
+    <a href="/Add/">Add Destination</a>
+    @data
+    <p>Destinations List:</p>
+    <div id="maindiv"></div>
+    <br />
+</body>
+</html>

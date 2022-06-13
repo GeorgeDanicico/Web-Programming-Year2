@@ -1,0 +1,35 @@
+﻿@{
+    var destination = ViewData["destination"] as Destination;
+}
+<html>
+<head>
+
+</head>
+<body>
+
+    <main class="main-container">
+        <div class="actions">
+            <div class="form1">
+                <form method="POST" asp-controller="Update" asp-action="Update">
+                    <h4>Add destination</h4>
+
+                    <label for="city">city:</label>
+                    <input type="text" name="city" value=@destination.City><br><br>
+                    <label for="country">country:</label>
+                    <input type="text" name="country" value=@destination.Country><br><br>
+                    <label for="description">description:</label>
+                    <input type="text" name="description" value=@destination.Description><br><br>
+                    <label for="tourists">tourists:</label>
+                    <input type="text" name="tourists" value=@destination.TouristTarget><br><br>
+                    <label for="estimated_cost">estimated cost:</label>
+                    <input type="text" name="estimated_cost" value=@destination.EstimatedCost><br><br>
+
+                    <button type="submit">Update destination</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
