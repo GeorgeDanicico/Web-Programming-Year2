@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Initial Page";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Destinations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#button").click(function () {
+                console.log("click");
+                $.get("/Home/GetDocuments", { title: $("#title").val(), },
+                    function(data,status) {
+                        $("#maindiv").html(data);
+
+                        $(".select-button").click(function () {
+                            console.log("click");
+                            $.get("/Home/GetTemplates", { docId: event.target.id }, function (data, status) {
+                                $("#maindiv2").html(data);
+                            });
+                        })
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .highlight {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <form method="post" asp-controller="Home" asp-action="AddEntry">
+        <p>Add new entry:</p>
+        <input type="text" placeholder="key" name="key" />
+        <input type="text" placeholder="value" name="value" />
+        <input type="submit" value="Add" />
+
+    </form>
+
+    <div>
+        <p>Search documents:</p>
+        <input type="text" placeholder="title" id="title" />
+        <input id="button" type="button" value="Search" />
+        <div id="maindiv"></div>
+        <p>Show templates</p>
+        <div id="maindiv2"></div>
+    </div>
+
+    <br />
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@{
+
+}
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Destinations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                $.get("/Post/CheckUpdates",
+                    function (data, status) {
+                        if (data !== "no")
+                            alert(data);
+                    });
+            });
+            $("#button2").click(function () {
+                $.post("/Person/SubscribePerson", { channelName: $("#channelname").val(), });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <h2>Welcome @Context.Session.GetString("user")</h2>
+    <div>
+        <input id="button1" type="button" value="Updates" />
+    </div>
+
+    <form method="post" asp-controller="Post" asp-action="ModifyPost">
+        <p>Modify post:</p>
+        <input type="text" placeholder="postid" name="postid" />
+        <input type="text" placeholder="text" name="text" />
+        <input type="submit" value="Modify" />
+
+    </form>
+
+    <form method="post" asp-controller="Post" asp-action="AddPost">
+        <p>Add post:</p>
+        <input type="text" placeholder="topicname" name="topicname" />
+        <input type="text" placeholder="text" name="text" />
+        <input type="submit" value="Add" />
+
+    </form>
+
+    <br />
+</body>
+</html>
